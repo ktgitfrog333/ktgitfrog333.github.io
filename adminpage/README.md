@@ -1,4 +1,4 @@
-# admin_page
+# adminpage
 
 > A Vue.js project
 
