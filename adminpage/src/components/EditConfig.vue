@@ -1,22 +1,54 @@
 <template>
-  <div>
+  <div class="container">
+    <PreviewGif :targetPreviewID="targetPreviewID" />
+    <h1 class="my-3">AdminBean</h1>
+    <hr/>
+    <h2 class="my-3">入力</h2>
+    <hr/>
     <div v-if='isUploaded'>
-        <h1>AdminBean</h1>
-        <p>targetLevels:
-            <select v-model="selectedIndex">
-                <option v-for="n in 20" :key="n-1" :value="n-1">{{ n-1 }}</option>
-            </select>
-        </p>
-        <p>playBgmNames:<input type="number" v-model.number="selectedPlayBgmName"></p>
-        <p>finalStages: <input type="number" v-model.number="selectedFinalStage"></p>
-        <p>skyBoxs: <input type="number" v-model.number="selectedSkyBox"></p>
-        <p>clearCountdownTimer: <input type="number" v-model.number="selectedclearCountdownTimer"></p>
-        <p>EnemyModel moveSpeed: <input type="number" v-model.number="enemyModelPropMoveSpeed"></p>
-        <p>EnemyModel hpMax: <input type="number" v-model.number="enemyModelPropHpMax"></p>
-      <button @click='downloadJson'>JSONをダウンロード</button>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'ステージ選択' }}</h3>
+          <hr/>
+          <label for="targetLevels">targetLevels:</label>
+          <select id="targetLevels" class="form-control" v-model="selectedIndex" disabled>
+              <option v-for="n in 20" :key="n-1" :value="n-1">{{ 'ステージ' + n }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'ステージ' + (selectedIndex + 1) + '設定' }}</h3>
+          <hr/>
+          <label for="playBgmNames">playBgmNames:</label>
+          <input id="playBgmNames" type="number" class="form-control" v-model.number="selectedPlayBgmName" disabled>
+          <label for="finalStages">finalStages:</label>
+          <input id="finalStages" type="number" class="form-control" v-model.number="selectedFinalStage" disabled>
+          <label for="skyBoxs">skyBoxs:</label>
+          <input id="skyBoxs" type="number" class="form-control" v-model.number="selectedSkyBox" disabled>
+          <label for="clearCountdownTimer">clearCountdownTimer:</label>
+          <input id="selectedclearCountdownTimer" type="number" class="form-control" v-model.number="selectedclearCountdownTimer" @click='setTargetPreviewID'>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ 'ステージ共通設定' }}</h3>
+          <hr/>
+          <label for="EnemyModelPropMoveSpeed">EnemyModelPropMoveSpeed:</label>
+          <input id="EnemyModelPropMoveSpeed" type="number" class="form-control" v-model.number="enemyModelPropMoveSpeed">
+          <label for="EnemyModelPropHpMax">EnemyModelPropHpMax:</label>
+          <input id="EnemyModelPropHpMax" type="number" class="form-control" v-model.number="enemyModelPropHpMax">
+        </div>
+      </div>
+      <h2 class="my-3">出力</h2>
+      <hr/>
+      <button class="btn btn-primary" @click='downloadJson'>JSONをダウンロード</button>
     </div>
     <div v-else>
-      <input type='file' @change='loadJson' />
+      <div class="custom-file">
+        <input type='file' class="custom-file-input" id="customFile" @change='loadJson'>
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
     </div>
   </div>
 </template>
@@ -24,9 +56,13 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
 import { type IAdminBean } from './IAdminBean'
+import PreviewGif from './PreviewGif.vue';
 
 export default defineComponent({
   name: 'EditConfig',
+  components: {
+    PreviewGif
+  },
   setup () {
     const selectedIndex = ref(0)
     const selectedPlayBgmName = ref(0)
@@ -121,6 +157,12 @@ export default defineComponent({
 
     const drSetBetweenJsonAndFields = (index = selectedIndex.value) => setBetweenJsonAndFields(index)
     const drSetBetweenFieldsAndJson = (index = selectedIndex.value) => setBetweenFieldsAndJson(index)
+    const targetPreviewID = ref('')
+    const setTargetPreviewID = (event: Event) => {
+      const target = event.target as HTMLInputElement;
+      if (target) 
+        targetPreviewID.value = target.id
+    }
 
     return {
       selectedIndex,
@@ -135,7 +177,9 @@ export default defineComponent({
       loadJson,
       downloadJson,
       drSetBetweenJsonAndFields,
-      drSetBetweenFieldsAndJson
+      drSetBetweenFieldsAndJson,
+      setTargetPreviewID,
+      targetPreviewID
     }
   }
 })
