@@ -144,11 +144,7 @@ export default defineComponent({
     const targetPreviewID = ref<IPreviewGif>(IPreviewGif[props.targetPreviewID as keyof typeof IPreviewGif])
     watch (() => props.targetPreviewID, (newVal) =>
     {
-      console.log(newVal)
       targetPreviewID.value = IPreviewGif[newVal as keyof typeof IPreviewGif]
-      console.log(targetPreviewID.value)
-      console.log(IPreviewGif['selectedclearCountdownTimer'])
-      console.log(targetPreviewID.value == IPreviewGif['selectedclearCountdownTimer'])
     })
 
     return {
