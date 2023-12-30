@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <PreviewGif :targetPreviewID="targetPreviewID" />
-    <h1 class="my-3">AdminBean - v0.3.1</h1>
+    <h1 class="my-3">AdminBean - v0.3.2</h1>
     <hr/>
     <h2 class="my-3">入力</h2>
     <hr/>

@@ -21,10 +21,47 @@ describe('EditConfig.vue', () => {
         clearCountdownTimer: [0],
         EnemyModel: {
           prop: {
-            moveSpeed: 0,
-            hpMax: 0
+          moveSpeed: 0,
+          hpMax: 0
+          },
+          DamageSufferedZoneOfEnemyModel: {
+            invincibleTimeSec: 0
           }
+      },
+      EnemiesSpawnModel: {
+        invincibleTimeSec: 0
+      }, // ここに適切な値を設定してください
+      ObjectsPoolModel: {
+        countLimit: 0
+      }, // ここに適切な値を設定してください
+      OnmyoBulletModel: {
+        moveDirection: {
+          x: 0,
+          y: 0
+        },
+        moveSpeed: 0
+      }, // ここに適切な値を設定してください
+      OnmyoTurretModel: {
+        instanceRateTimeSec: 0
+      },
+      PentagramSystemModel: {
+        autoSpinSpeed: 0
+      },
+      PentagramTurnTableView: {
+        angleCorrectionValue: 0
+      },
+      PentagramTurnTableModel: {
+        distance: 0
+      },
+      PlayerModel: {
+        DamageSufferedZoneOfPlayerModel: {
+          invincibleTimeSec: 0
+        },
+        prop: {
+          hpMax: 0,
+          moveSpeed: 0
         }
+      }
     }
     // メソッドを呼び出す
     await wrapper.vm.drSetBetweenFieldsAndJson()
@@ -44,16 +81,53 @@ describe('EditConfig.vue', () => {
 
         // テストデータを設定
         wrapper.vm.jsonData = {
-        playBgmNames: [1],
-        finalStages: [2],
-        skyBoxs: [3],
-        clearCountdownTimer: [4],
-        EnemyModel: {
+          playBgmNames: [1],
+          finalStages: [2],
+          skyBoxs: [3],
+          clearCountdownTimer: [4],
+          EnemyModel: {
+              prop: {
+              moveSpeed: 5,
+              hpMax: 6
+              },
+              DamageSufferedZoneOfEnemyModel: {
+                invincibleTimeSec: 0
+              }
+          },
+          EnemiesSpawnModel: {
+            invincibleTimeSec: 0
+          }, // ここに適切な値を設定してください
+          ObjectsPoolModel: {
+            countLimit: 0
+          }, // ここに適切な値を設定してください
+          OnmyoBulletModel: {
+            moveDirection: {
+              x: 0,
+              y: 0
+            },
+            moveSpeed: 0
+          }, // ここに適切な値を設定してください
+          OnmyoTurretModel: {
+            instanceRateTimeSec: 0
+          },
+          PentagramSystemModel: {
+            autoSpinSpeed: 0
+          },
+          PentagramTurnTableView: {
+            angleCorrectionValue: 0
+          },
+          PentagramTurnTableModel: {
+            distance: 0
+          },
+          PlayerModel: {
+            DamageSufferedZoneOfPlayerModel: {
+              invincibleTimeSec: 0
+            },
             prop: {
-            moveSpeed: 5,
-            hpMax: 6
+              hpMax: 0,
+              moveSpeed: 0
             }
-        }
+          }
         }
 
         // メソッドを呼び出す
