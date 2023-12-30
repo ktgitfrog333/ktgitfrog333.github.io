@@ -5,5 +5,19 @@ export enum IPreviewGif {
     selectedSkyBox,
     selectedclearCountdownTimer,
     enemyModelPropMoveSpeed,
-    enemyModelPropHpMax
+    enemyModelPropHpMax,
+    enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec,
+    enemiesSpawnModelInvincibleTimeSec,
+    objectsPoolModelCountLimit,
+    onmyoBulletModelMoveDirectionX,
+    onmyoBulletModelMoveDirectionY,
+    onmyoBulletModelMoveSpeed,
+    onmyoTurretModelInstanceRateTimeSec,
+    pentagramSystemModelAutoSpinSpeed,
+    pentagramTurnTableViewAngleCorrectionValue,
+    pentagramTurnTableModelDistance,
+    playerModelPropMoveSpeed,
+    playerModelPropHPMax,
+    playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec,
+    downloadJson
 }

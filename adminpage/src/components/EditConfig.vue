@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <PreviewGif :targetPreviewID="targetPreviewID" />
-    <h1 class="my-3">AdminBean</h1>
+    <h1 class="my-3">AdminBean - v0.3.0</h1>
     <hr/>
     <h2 class="my-3">入力</h2>
     <hr/>
@@ -21,11 +21,11 @@
           <h3 class="card-title">{{ 'ステージ' + (selectedIndex + 1) + '設定' }}</h3>
           <hr/>
           <label for="playBgmNames">playBgmNames:</label>
-          <input id="playBgmNames" type="number" class="form-control" v-model.number="selectedPlayBgmName" disabled>
+          <input id="playBgmNames" type="number" class="form-control" v-model.number="selectedPlayBgmName" @click='setTargetPreviewID' disabled>
           <label for="finalStages">finalStages:</label>
-          <input id="finalStages" type="number" class="form-control" v-model.number="selectedFinalStage" disabled>
+          <input id="finalStages" type="number" class="form-control" v-model.number="selectedFinalStage" @click='setTargetPreviewID' disabled>
           <label for="skyBoxs">skyBoxs:</label>
-          <input id="skyBoxs" type="number" class="form-control" v-model.number="selectedSkyBox" disabled>
+          <input id="skyBoxs" type="number" class="form-control" v-model.number="selectedSkyBox" @click='setTargetPreviewID' disabled>
           <label for="clearCountdownTimer">clearCountdownTimer:</label>
           <input id="selectedclearCountdownTimer" type="number" class="form-control" v-model.number="selectedclearCountdownTimer" @click='setTargetPreviewID'>
         </div>
@@ -35,14 +35,40 @@
           <h3 class="card-title">{{ 'ステージ共通設定' }}</h3>
           <hr/>
           <label for="EnemyModelPropMoveSpeed">EnemyModelPropMoveSpeed:</label>
-          <input id="EnemyModelPropMoveSpeed" type="number" class="form-control" v-model.number="enemyModelPropMoveSpeed">
+          <input id="enemyModelPropMoveSpeed" type="number" class="form-control" v-model.number="enemyModelPropMoveSpeed" @click='setTargetPreviewID'>
           <label for="EnemyModelPropHpMax">EnemyModelPropHpMax:</label>
-          <input id="EnemyModelPropHpMax" type="number" class="form-control" v-model.number="enemyModelPropHpMax">
+          <input id="enemyModelPropHpMax" type="number" class="form-control" v-model.number="enemyModelPropHpMax" @click='setTargetPreviewID'>
+          <label for="EnemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec">EnemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec:</label>
+          <input id="enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec" type="number" class="form-control" v-model.number="enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec" @click='setTargetPreviewID' disabled>
+          <label for="EnemiesSpawnModelInvincibleTimeSec">EnemiesSpawnModelInvincibleTimeSec:</label>
+          <input id="enemiesSpawnModelInvincibleTimeSec" type="number" class="form-control" v-model.number="enemiesSpawnModelInvincibleTimeSec" @click='setTargetPreviewID'>
+          <label for="ObjectsPoolModelCountLimit">ObjectsPoolModelCountLimit:</label>
+          <input id="objectsPoolModelCountLimit" type="number" class="form-control" v-model.number="objectsPoolModelCountLimit" @click='setTargetPreviewID'>
+          <label for="OnmyoBulletModelMoveDirectionX">OnmyoBulletModelMoveDirectionX:</label>
+          <input id="onmyoBulletModelMoveDirectionX" type="number" class="form-control" v-model.number="onmyoBulletModelMoveDirectionX" @click='setTargetPreviewID'>
+          <label for="OnmyoBulletModelMoveDirectionY">OnmyoBulletModelMoveDirectionY:</label>
+          <input id="onmyoBulletModelMoveDirectionY" type="number" class="form-control" v-model.number="onmyoBulletModelMoveDirectionY" @click='setTargetPreviewID'>
+          <label for="OnmyoBulletModelMoveSpeed">OnmyoBulletModelMoveSpeed:</label>
+          <input id="onmyoBulletModelMoveSpeed" type="number" class="form-control" v-model.number="onmyoBulletModelMoveSpeed" @click='setTargetPreviewID'>
+          <label for="OnmyoTurretModelInstanceRateTimeSec">OnmyoTurretModelInstanceRateTimeSec:</label>
+          <input id="onmyoTurretModelInstanceRateTimeSec" type="number" class="form-control" v-model.number="onmyoTurretModelInstanceRateTimeSec" @click='setTargetPreviewID'>
+          <label for="PentagramSystemModelAutoSpinSpeed">PentagramSystemModelAutoSpinSpeed:</label>
+          <input id="pentagramSystemModelAutoSpinSpeed" type="number" class="form-control" v-model.number="pentagramSystemModelAutoSpinSpeed" @click='setTargetPreviewID'>
+          <label for="PentagramTurnTableViewAngleCorrectionValue">PentagramTurnTableViewAngleCorrectionValue:</label>
+          <input id="pentagramTurnTableViewAngleCorrectionValue" type="number" class="form-control" v-model.number="pentagramTurnTableViewAngleCorrectionValue" @click='setTargetPreviewID'>
+          <label for="PentagramTurnTableModelDistance">PentagramTurnTableModelDistance:</label>
+          <input id="pentagramTurnTableModelDistance" type="number" class="form-control" v-model.number="pentagramTurnTableModelDistance" @click='setTargetPreviewID'>
+          <label for="PlayerModelPropMoveSpeed">PlayerModelPropMoveSpeed:</label>
+          <input id="playerModelPropMoveSpeed" type="number" class="form-control" v-model.number="playerModelPropMoveSpeed" @click='setTargetPreviewID' disabled>
+          <label for="PlayerModelPropHPMax">PlayerModelPropHPMax:</label>
+          <input id="playerModelPropHPMax" type="number" class="form-control" v-model.number="playerModelPropHPMax" @click='setTargetPreviewID'>
+          <label for="PlayerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec">PlayerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec:</label>
+          <input id="playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec" type="number" class="form-control" v-model.number="playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec" @click='setTargetPreviewID'>
         </div>
       </div>
       <h2 class="my-3">出力</h2>
       <hr/>
-      <button class="btn btn-primary" @click='downloadJson'>JSONをダウンロード</button>
+      <button id="downloadJson" class="btn btn-primary" @click='downloadJson'>JSONをダウンロード</button>
     </div>
     <div v-else>
       <div class="custom-file">
@@ -71,6 +97,19 @@ export default defineComponent({
     const selectedclearCountdownTimer = ref(0.0)
     const enemyModelPropMoveSpeed = ref(0.0)
     const enemyModelPropHpMax = ref(0)
+    const enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec = ref(0)
+    const enemiesSpawnModelInvincibleTimeSec = ref(0)
+    const objectsPoolModelCountLimit = ref(0)
+    const onmyoBulletModelMoveDirectionX = ref(0)
+    const onmyoBulletModelMoveDirectionY = ref(0)
+    const onmyoBulletModelMoveSpeed = ref(0)
+    const onmyoTurretModelInstanceRateTimeSec = ref(0)
+    const pentagramSystemModelAutoSpinSpeed = ref(0)
+    const pentagramTurnTableViewAngleCorrectionValue = ref(0)
+    const pentagramTurnTableModelDistance = ref(0)
+    const playerModelPropMoveSpeed = ref(0)
+    const playerModelPropHPMax = ref(0)
+    const playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec = ref(0)
     const jsonData = ref<IAdminBean>({
       playBgmNames: [],
       finalStages: [],
@@ -80,6 +119,43 @@ export default defineComponent({
         prop: {
           moveSpeed: 0,
           hpMax: 0
+        },
+        DamageSufferedZoneOfEnemyModel: {
+          invincibleTimeSec: 0
+        }
+      },
+      EnemiesSpawnModel: {
+        invincibleTimeSec: 0
+      },
+      ObjectsPoolModel: {
+        countLimit: 0
+      },
+      OnmyoBulletModel: {
+        moveDirection: {
+          x: 0,
+          y: 0
+        },
+        moveSpeed: 0
+      },
+      OnmyoTurretModel: {
+        instanceRateTimeSec: 0
+      },
+      PentagramSystemModel: {
+        autoSpinSpeed: 0
+      },
+      PentagramTurnTableView: {
+        angleCorrectionValue: 0
+      },
+      PentagramTurnTableModel: {
+        distance: 0
+      },
+      PlayerModel: {
+        prop: {
+          moveSpeed: 0,
+          hpMax: 0
+        },
+        DamageSufferedZoneOfPlayerModel: {
+          invincibleTimeSec: 0
         }
       }
     })
@@ -122,15 +198,16 @@ export default defineComponent({
         }
       }
     }  
-    const downloadJson = () => {
+    const downloadJson = (event: Event) => {
       setBetweenFieldsAndJson()
       const dataStr = 'data:text/jsoncharset=utf-8,' + encodeURIComponent(JSON.stringify(jsonData.value))
       const downloadAnchorNode = document.createElement('a')
       downloadAnchorNode.setAttribute('href', dataStr)
-      downloadAnchorNode.setAttribute('download', 'data.json')
+      downloadAnchorNode.setAttribute('download', 'AdminData.json')
       document.body.appendChild(downloadAnchorNode) // required for firefox
       downloadAnchorNode.click()
       downloadAnchorNode.remove()
+      setTargetPreviewID(event)
     }
 
     const setBetweenJsonAndFields = (index = selectedIndex.value) => {
@@ -141,6 +218,19 @@ export default defineComponent({
         selectedclearCountdownTimer.value = jsonData.value.clearCountdownTimer[index]
         enemyModelPropMoveSpeed.value = jsonData.value.EnemyModel.prop.moveSpeed
         enemyModelPropHpMax.value = jsonData.value.EnemyModel.prop.hpMax
+        enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec.value = jsonData.value.EnemyModel.DamageSufferedZoneOfEnemyModel.invincibleTimeSec
+        enemiesSpawnModelInvincibleTimeSec.value = jsonData.value.EnemiesSpawnModel.invincibleTimeSec
+        objectsPoolModelCountLimit.value = jsonData.value.ObjectsPoolModel.countLimit
+        onmyoBulletModelMoveDirectionX.value = jsonData.value.OnmyoBulletModel.moveDirection.x
+        onmyoBulletModelMoveDirectionY.value = jsonData.value.OnmyoBulletModel.moveDirection.y
+        onmyoBulletModelMoveSpeed.value = jsonData.value.OnmyoBulletModel.moveSpeed
+        onmyoTurretModelInstanceRateTimeSec.value = jsonData.value.OnmyoTurretModel.instanceRateTimeSec
+        pentagramSystemModelAutoSpinSpeed.value = jsonData.value.PentagramSystemModel.autoSpinSpeed
+        pentagramTurnTableViewAngleCorrectionValue.value = jsonData.value.PentagramTurnTableView.angleCorrectionValue
+        pentagramTurnTableModelDistance.value = jsonData.value.PentagramTurnTableModel.distance
+        playerModelPropMoveSpeed.value = jsonData.value.PlayerModel.prop.moveSpeed
+        playerModelPropHPMax.value = jsonData.value.PlayerModel.prop.hpMax
+        playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec.value = jsonData.value.PlayerModel.DamageSufferedZoneOfPlayerModel.invincibleTimeSec
       }
     }
 
@@ -152,6 +242,19 @@ export default defineComponent({
         jsonData.value.clearCountdownTimer[index] = selectedclearCountdownTimer.value
         jsonData.value.EnemyModel.prop.moveSpeed = enemyModelPropMoveSpeed.value
         jsonData.value.EnemyModel.prop.hpMax = enemyModelPropHpMax.value
+        jsonData.value.EnemyModel.DamageSufferedZoneOfEnemyModel.invincibleTimeSec = enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec.value
+        jsonData.value.EnemiesSpawnModel.invincibleTimeSec = enemiesSpawnModelInvincibleTimeSec.value
+        jsonData.value.ObjectsPoolModel.countLimit = objectsPoolModelCountLimit.value
+        jsonData.value.OnmyoBulletModel.moveDirection.x = onmyoBulletModelMoveDirectionX.value
+        jsonData.value.OnmyoBulletModel.moveDirection.y = onmyoBulletModelMoveDirectionY.value
+        jsonData.value.OnmyoBulletModel.moveSpeed = onmyoBulletModelMoveSpeed.value
+        jsonData.value.OnmyoTurretModel.instanceRateTimeSec = onmyoTurretModelInstanceRateTimeSec.value
+        jsonData.value.PentagramSystemModel.autoSpinSpeed = pentagramSystemModelAutoSpinSpeed.value
+        jsonData.value.PentagramTurnTableView.angleCorrectionValue = pentagramTurnTableViewAngleCorrectionValue.value
+        jsonData.value.PentagramTurnTableModel.distance = pentagramTurnTableModelDistance.value
+        jsonData.value.PlayerModel.prop.moveSpeed = playerModelPropMoveSpeed.value
+        jsonData.value.PlayerModel.prop.hpMax = playerModelPropHPMax.value
+        jsonData.value.PlayerModel.DamageSufferedZoneOfPlayerModel.invincibleTimeSec = playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec.value
       }
     }
 
@@ -172,6 +275,19 @@ export default defineComponent({
       selectedclearCountdownTimer,
       enemyModelPropMoveSpeed,
       enemyModelPropHpMax,
+      enemyModelDamageSufferedZoneOfEnemyModelInvincibleTimeSec,
+      enemiesSpawnModelInvincibleTimeSec,
+      objectsPoolModelCountLimit,
+      onmyoBulletModelMoveDirectionX,
+      onmyoBulletModelMoveDirectionY,
+      onmyoBulletModelMoveSpeed,
+      onmyoTurretModelInstanceRateTimeSec,
+      pentagramSystemModelAutoSpinSpeed,
+      pentagramTurnTableViewAngleCorrectionValue,
+      pentagramTurnTableModelDistance,
+      playerModelPropMoveSpeed,
+      playerModelPropHPMax,
+      playerModelDamageSufferedZoneOfPlayerModelInvincibleTimeSec,
       jsonData,
       isUploaded,
       loadJson,
